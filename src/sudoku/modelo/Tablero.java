@@ -121,4 +121,7 @@ public class Tablero {
 		s+="\n";
 		return s;
 	}
+	public Almacen obtenerRecuadro(int x,int y){
+		
+	}
 }
