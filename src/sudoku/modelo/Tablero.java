@@ -10,9 +10,17 @@ public class Tablero {
 	 */
 	private List<List<Celda>> celdas;
 	/**
-	 * Lista de recuadros
+	 * Lista de recuadros.
 	 */
-	private List<Recuadro> recuadros;
+	private List<Almacen> recuadros;
+	/**
+	 * Lista de filas.
+	 */
+	private List<Almacen> filass;
+	/**
+	 * Lista de columnas.
+	 */
+	private List<Almacen> columnass;
 	/**
 	 * Constructor del tablero.
 	 * @param filas filas
@@ -20,9 +28,13 @@ public class Tablero {
 	 */
 	public Tablero(int filas,int columnas){
 		celdas=new ArrayList<List<Celda>>(filas);
-		recuadros=new ArrayList<Recuadro>(9);
+		recuadros=new ArrayList<Almacen>(filas);
+		filass=new ArrayList<Almacen>(filas);
+		columnass=new ArrayList<Almacen>(columnas);
 		for (int i=0;i<9;++i){
-			recuadros.add(new Recuadro(9));
+			recuadros.add(new Almacen(9));
+			filass.add(new Almacen(9));
+			columnass.add(new Almacen(9));
 		}
 		int aux = 0;
 		int aux2=0;
@@ -35,6 +47,8 @@ public class Tablero {
 				int index=aux*3+aux2;
 				Celda c=celdas.get(i).get(j);
 				recuadros.get(index).addCell(c);
+				filass.get(i).addCell(c);
+				columnass.get(j).addCell(c);
 			}
 		}
 		int a=0;
