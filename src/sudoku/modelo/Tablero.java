@@ -10,18 +10,35 @@ public class Tablero {
 	 */
 	private List<List<Celda>> celdas;
 	/**
+	 * Lista de recuadros
+	 */
+	private List<Recuadro> recuadros;
+	/**
 	 * Constructor del tablero.
 	 * @param filas filas
 	 * @param columnas columnas
 	 */
 	public Tablero(int filas,int columnas){
 		celdas=new ArrayList<List<Celda>>(filas);
+		recuadros=new ArrayList<Recuadro>(9);
+		for (int i=0;i<9;++i){
+			recuadros.add(new Recuadro(9));
+		}
+		int aux = 0;
+		int aux2=0;
 		for (int i=0;i<filas;++i){
 			celdas.add(i,new ArrayList<Celda>(columnas));
 			for (int j=0;j<columnas;++j){
 				celdas.get(i).add(j,new Celda(i,j));
+				aux=i/3;
+				aux2=j/3;
+				int index=aux*3+aux2;
+				Celda c=celdas.get(i).get(j);
+				recuadros.get(index).addCell(c);
 			}
 		}
+		int a=0;
+		a=2*a;
 	}
 	/**
 	 * Devuelve si la celda está en el tablero.

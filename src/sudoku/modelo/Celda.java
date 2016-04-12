@@ -63,4 +63,10 @@ public class Celda {
 		s+=numero;
 		return s;
 		}
+	@Override
+	public String toString(){
+		String s=new String();
+		s+="<"+fila+"-"+numero+"-"+columna+">";
+		return s;
+	}
 }
