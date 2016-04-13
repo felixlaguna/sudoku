@@ -3,12 +3,13 @@ package sudoku.modelo;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.List;
 
 public class Almacen {
 	private List<Celda> celdas;
 	public Almacen(int N){
-		celdas=new ArrayList<Celda>(9);
+		celdas=new LinkedList<Celda>();
 	}
 	public List<Celda> obtenerCeldas(){
 		return celdas;
@@ -24,7 +25,7 @@ public class Almacen {
 		return (lista.size()==new HashSet<>(lista).size());
 	}
 	public List<Celda> celdasVacias(){
-		List<Celda> resultado=new ArrayList<Celda>();
+		List<Celda> resultado=new LinkedList<Celda>();
 		for (Celda c: celdas){
 			if (c.estaVacia()){
 				resultado.add(c);
@@ -33,7 +34,7 @@ public class Almacen {
 		return resultado;
 	}
 	public List<Integer> numeroValidos(){
-		List<Integer> resultado=new ArrayList<Integer>();
+		List<Integer> resultado=new LinkedList<Integer>();
 		for (int i=1;i<10;++i){
 			resultado.add(i);
 		}

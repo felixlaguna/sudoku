@@ -1,4 +1,7 @@
 package sudoku.modelo;
+
+import java.util.List;
+
 /**
  * Clase de celda.
  * @author FELIX
@@ -71,5 +74,10 @@ public class Celda {
 		String s=new String();
 		s+="<"+fila+"-"+numero+"-"+columna+">";
 		return s;
+	}
+	public Celda clone(){
+		Celda c=new Celda(fila,columna);
+		c.establecerNumero(numero);
+		return c;
 	}
 }

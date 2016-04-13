@@ -160,7 +160,68 @@ public class Tablero {
 			}
 		}
 		return almacen;
-		
+	}
+	private List<Almacen> obtenerrecuadros(){
+		return this.recuadros;
+	}
+	private List<Almacen> obtenerfilas(){
+		return this.filass;
+	}
+	private List<Almacen> obtenercolumnas(){
+		return this.columnass;
+	}
+	private void colocarrecuadros(List<Almacen> a){
+		this.recuadros=a;
+	}
+	private void colocarfilas(List<Almacen> a){
+		this.filass=a;
+	}
+	private void colocarcolumnas(List<Almacen> a){
+		this.columnass=a;
+	}
+	private void colocarceldas(List<List<Celda>> celdas){
+		this.celdas=celdas;
+	}
+	public Tablero clone(){
+		Tablero resultado=new Tablero(this.obtenerNumeroFilas(),this.obtenerNumeroColumnas());
+		List<List<Celda>> a=new ArrayList<List<Celda>>();
+		List<Almacen> r=new ArrayList<Almacen>();
+		List<Almacen> f=new ArrayList<Almacen>();
+		List<Almacen> col=new ArrayList<Almacen>();
+		for (int i=0;i<9;++i){
+			r.add(new Almacen(9));
+			f.add(new Almacen(9));
+			col.add(new Almacen(9));
+		}
+		int aux = 0;
+		int aux2=0;
+		for (int i=0;i<celdas.size();++i){
+			a.add(new ArrayList<Celda>());
+			for (int j=0;j<celdas.get(0).size();++j){
+				a.get(i).add(obtenerCelda(i,j).clone());
+				aux=i/3;
+				aux2=j/3;
+				int index=aux*3+aux2;
+				Celda c=a.get(i).get(j);
+				r.get(index).addCell(c);
+				f.get(i).addCell(c);
+				col.get(j).addCell(c);
+			}
+		}
+		resultado.colocarceldas(a);
+		resultado.colocarcolumnas(col);
+		resultado.colocarfilas(f);
+		resultado.colocarrecuadros(r);
+		return resultado;
+	}
+	public List<Celda> toList(){
+		List<Celda> lista= new ArrayList();
+		for (int i=0;i<this.obtenerNumeroFilas();++i){
+			for (int j=0;j<this.obtenerNumeroColumnas();++j){
+				lista.add(obtenerCelda(i,j));
+			}
+		}
+		return lista;
 	}
 	
 	

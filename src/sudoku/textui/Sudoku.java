@@ -1,7 +1,6 @@
 package sudoku.textui;
 
 import sudoku.control.Arbitro;
-import sudoku.modelo.Tablero;
 
 public class Sudoku {
 
@@ -10,6 +9,8 @@ public class Sudoku {
 		Arbitro arbitro=new Arbitro(9,9);
 		System.out.println(arbitro.obtenerTablero().toString());
 		arbitro.rellenar();
+		System.out.println(arbitro.obtenerTablero().toString());
+		arbitro.terminar(0);
 		System.out.println(arbitro.obtenerTablero().toString());
 	}
 
