@@ -122,6 +122,46 @@ public class Tablero {
 		return s;
 	}
 	public Almacen obtenerRecuadro(int x,int y){
+		int num=(int) Math.sqrt(recuadros.size());
+		return recuadros.get(x*num+y);
+	}
+	public Almacen obtenerRecuadro(Celda c){
+		Almacen almacen=null;
+		for (Almacen a: recuadros){
+			if (a.contains(c)){
+				almacen=a;
+			}
+		}
+		return almacen;
 		
 	}
+	public Almacen obtenerFila(int x){
+		return filass.get(x);
+	}
+	public Almacen obtenerFila(Celda c){
+		Almacen almacen=null;
+		for (Almacen a: filass){
+			if (a.contains(c)){
+				almacen=a;
+			}
+		}
+		return almacen;
+		
+	}
+	public Almacen obtenerColumna(int y){
+		return columnass.get(y);
+		
+	}
+	public Almacen obtenerColumna(Celda c){
+		Almacen almacen=null;
+		for (Almacen a: columnass){
+			if (a.contains(c)){
+				almacen=a;
+			}
+		}
+		return almacen;
+		
+	}
+	
+	
 }
