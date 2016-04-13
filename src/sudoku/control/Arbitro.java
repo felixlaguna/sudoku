@@ -1,6 +1,8 @@
 package sudoku.control;
 
+import java.util.ArrayDeque;
 import java.util.ArrayList;
+import java.util.Deque;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
@@ -66,18 +68,29 @@ public class Arbitro {
 	}
 	public void rellenar(){
 		List<Celda> vacias=celdasVacias();
+		Deque<Celda> anadidas=new ArrayDeque<Celda>();
+		Celda c;
 		while (!vacias.isEmpty()){
-			Celda c=Arbitro.aleatorio(vacias);
-			
-			if (numerosValidos(c).isEmpty()){
-				System.out.println("Error en celda"+c.toString());
-				List<Integer> temp=numerosValidos(c);
+			c=Arbitro.aleatorio(vacias);
+			int respuestas=respuestas();
+			if (respuestas()>1){
+				c.establecerNumero(Arbitro.aleatorio(numerosValidos(c)));
+				anadidas.push(c);
+				vacias.remove(c);
+				System.out.println(tablero.toString());
+			}else if (respuestas==1){
+				
+			}else{
+				while (respuestas()==0){
+					
+				}
 			}
-			c.establecerNumero(Arbitro.aleatorio(numerosValidos(c)));
-			vacias.remove(c);
-			System.out.println(tablero.toString());
+//			if (numerosValidos(c).isEmpty()){
+//				System.out.println("Error en celda"+c.toString());
+//				List<Integer> temp=numerosValidos(c);
+//			}
+			
 		}
-		int a=0;
 	}
 	public List<Celda> celdasVacias(){
 		List<Celda> resultado=new LinkedList<Celda>();
@@ -89,6 +102,21 @@ public class Arbitro {
 				}
 			}
 		}
+		return resultado;
+	}
+	public int respuestas(){
+		int resultado=10;
+		for (int i=0;i<tablero.obtenerNumeroFilas();++i){
+			for (int j=0;j<tablero.obtenerNumeroColumnas();++j){
+				if (tablero.obtenerCelda(i,j).estaVacia()){
+					if (resultado>numerosValidos(tablero.obtenerCelda(i, j)).size()){
+						resultado=numerosValidos(tablero.obtenerCelda(i, j)).size();
+					}
+				}
+				
+			}
+		}
+		
 		return resultado;
 	}
 	

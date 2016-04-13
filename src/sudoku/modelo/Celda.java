@@ -63,6 +63,9 @@ public class Celda {
 		s+=numero;
 		return s;
 		}
+	public void vaciar(){
+		numero=0;
+	}
 	@Override
 	public String toString(){
 		String s=new String();
