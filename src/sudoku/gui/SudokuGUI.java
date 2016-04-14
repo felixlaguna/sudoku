@@ -142,7 +142,7 @@ public class SudokuGUI {
 			public void actionPerformed(ActionEvent arg0) {
 				f.dispose();
 				int num;
-				Object[] possibilities = {0, 1, 2,3,4,5,6,7,8,9};
+				Object[] possibilities = {0, 1, 2,3,4,5,6,7};
 				num = (int)JOptionPane.showInputDialog(
 				                   	f,
 				                    "Seleccione una dificultad\n",
@@ -179,7 +179,7 @@ public class SudokuGUI {
 	 * @param args argumentos como array de strings.
 	 */
 	public static void main(String[] args) {
-		inicializar(2);
+		inicializar(1);
 	}
 	/**
 	 * Clase interna de cell, un tipo de botón jButton.
