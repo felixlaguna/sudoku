@@ -1,8 +1,8 @@
 /**
- * 
+ * Interfaz gráfica del sudoku.
  */
 /**
- * @author restonpiston
+ * @author Félix Laguna Teno
  *
  */
 package sudoku.gui;

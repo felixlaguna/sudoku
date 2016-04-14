@@ -1,8 +1,8 @@
 /**
- * 
+ * Paquete de control del sudoku.
  */
 /**
- * @author restonpiston
+ * @author Félix Laguna Teno
  *
  */
 package sudoku.control;

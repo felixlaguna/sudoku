@@ -1,8 +1,8 @@
 /**
- * 
+ * Modelo de datos de las diferentes partes del sudoku.
  */
 /**
- * @author restonpiston
+ * @author Félix Laguna Teno
  *
  */
 package sudoku.modelo;

@@ -1,15 +1,22 @@
 package sudoku.modelo;
-
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
-
+/**
+ * Almacen de celdas.
+ * @author Félix Laguna Teno
+ *
+ */
 public class Almacen {
 	/**
-	 * 
+	 * Lista de celdas.
 	 */
 	private List<Celda> celdas;
+	/**
+	 * Constructor del almacen.
+	 * @param N int dimensión
+	 */
 	public Almacen(int N){
 		celdas=new LinkedList<Celda>();
 	}

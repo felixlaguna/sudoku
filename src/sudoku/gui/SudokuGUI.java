@@ -24,7 +24,7 @@ import sudoku.modelo.*;
 import sudoku.control.*;
 
 /**
- * Clase de interfaz gráfica de la sopa de letras.
+ * Clase de interfaz gráfica del sudoku.
  * @author FELIX
  *
  */
@@ -34,19 +34,21 @@ public class SudokuGUI {
 	 */
 	private static int N=9;
 	/**
-	 * Lista de los botones
+	 * Lista de los botones.
 	 */
 	private final List<Cell> list = new ArrayList<Cell>();
+	/**
+	 * Lista de celdas originales.
+	 */
 	private static List<Celda> originales=new ArrayList<Celda>();
 	/**
 	 * Arbitro.
 	 */
 	private static Arbitro arbitro;
-	private static JLabel labelPal;
 	/**
-	 * Lineas a introducir en la sopa de letras.
+	 * Panel inferior.
 	 */
-	
+	private static JLabel labelPal;
 	/**
 	 * Devuelve el boton asociado a unas coordenadas.
 	 * @param r fila
@@ -72,7 +74,7 @@ public class SudokuGUI {
 			 */
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
+				;
 			}
 		});
 		b.addMouseListener(new MouseAdapter() {
@@ -245,9 +247,6 @@ public class SudokuGUI {
 			return col;
 		}
 	}
-	/**
-	 * Añade palabras al array lines.
-	 */
 	/**
 	 * Aplica el color blanco a las celdas que no tengan palabras ganadoras o que no se estén usando.
 	 */

@@ -11,8 +11,8 @@ import sudoku.modelo.Tablero;
 
 
 /**
- * Arbitro de la sopa de letras.
- * @author FELIX
+ * Arbitro del sudoku.
+ * @author Félix Laguna Teno
  *
  */
 public class Arbitro {
@@ -28,14 +28,6 @@ public class Arbitro {
 	public Arbitro(int filas, int columnas){
 		tablero=new Tablero(filas,columnas);
 	}
-	/**
-	 * Devuelve si una palarba cabe en una celda, en un sentido.
-	 * @param palabra palabra
-	 * @param celda celda
-	 * @param sentido sentido
-	 * @return true si cabe, false si no
-	 */
-
 	/**
 	 * Devuelve el tablero.
 	 * @return tablero
