@@ -100,9 +100,6 @@ public class Tablero {
 			return null;
 		}
 	}
-	/**
-	 * ToString.
-	 */
 	@Override
 	public String toString(){
 		String s="";
@@ -121,9 +118,19 @@ public class Tablero {
 		s+="\n";
 		return s;
 	}
+	/**
+	 * Devuelve el recuadro de índice x.
+	 * @param x índice
+	 * @return Almacen recuadro
+	 */
 	public Almacen obtenerRecuadro(int x){
 		return recuadros.get(x);
 	}
+	/**
+	 * Devuelve el recuadro de la celda c.
+	 * @param c Celda
+	 * @return Almacen recuadro
+	 */
 	public Almacen obtenerRecuadro(Celda c){
 		Almacen almacen=null;
 		for (Almacen a: recuadros){
@@ -134,9 +141,19 @@ public class Tablero {
 		return almacen;
 		
 	}
+	/**
+	 * Devuelve la fila de índice x.
+	 * @param x índice
+	 * @return Almacen recuadro
+	 */
 	public Almacen obtenerFila(int x){
 		return filass.get(x);
 	}
+	/**
+	 * Devuelve la fila de la celda c.
+	 * @param c Celda
+	 * @return Almacen fila
+	 */
 	public Almacen obtenerFila(Celda c){
 		Almacen almacen=null;
 		for (Almacen a: filass){
@@ -147,10 +164,20 @@ public class Tablero {
 		return almacen;
 		
 	}
+	/**
+	 * Devuelve la columna de índice x.
+	 * @param x índice
+	 * @return Almacen recuadro
+	 */
 	public Almacen obtenerColumna(int y){
 		return columnass.get(y);
 		
 	}
+	/**
+	 * Devuelve la columna de la celda c.
+	 * @param c Celda
+	 * @return Almacen columna
+	 */
 	public Almacen obtenerColumna(Celda c){
 		Almacen almacen=null;
 		for (Almacen a: columnass){
@@ -172,6 +199,7 @@ public class Tablero {
 	private void colocarceldas(List<List<Celda>> celdas){
 		this.celdas=celdas;
 	}
+	@Override
 	public Tablero clone(){
 		Tablero resultado=new Tablero(this.obtenerNumeroFilas(),this.obtenerNumeroColumnas());
 		List<List<Celda>> a=new ArrayList<List<Celda>>();
@@ -204,6 +232,10 @@ public class Tablero {
 		resultado.colocarrecuadros(r);
 		return resultado;
 	}
+	/**
+	 * Devuelve las celdas como una única lista.
+	 * @return lista<Celda> de celdas
+	 */
 	public List<Celda> toList(){
 		List<Celda> lista= new ArrayList<Celda>();
 		for (int i=0;i<this.obtenerNumeroFilas();++i){
@@ -213,6 +245,10 @@ public class Tablero {
 		}
 		return lista;
 	}
+	/**
+	 * Cambia las celdas por las pasadas por parámetro.
+	 * @param lista lista<Celda> de celdas
+	 */
 	public void changeCell(List<Celda> lista){
 		for (int i=0;i<this.obtenerNumeroFilas();++i){
 			for (int j=0;j<this.obtenerNumeroColumnas();++j){

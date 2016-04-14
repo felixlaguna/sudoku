@@ -20,12 +20,24 @@ public class Almacen {
 	public Almacen(int N){
 		celdas=new LinkedList<Celda>();
 	}
+	/**
+	 * Devuelve la lista de celdas.
+	 * @return lista<Celda> de celdas
+	 */
 	public List<Celda> obtenerCeldas(){
 		return celdas;
 	}
+	/**
+	 * Añade una celda al almacen.
+	 * @param c Celda
+	 */
 	public void addCell(Celda c){
 		celdas.add(c);
 	}
+	/**
+	 * Comprueba si el almacen cumple las condiciones para ser correcto, tener todos los numeros distintos.
+	 * @return true si es correcto, false si no
+	 */
 	public boolean esCorrecto(){
 		List<Integer> lista=new ArrayList<Integer>();
 		for (Celda c:celdas){
@@ -33,15 +45,10 @@ public class Almacen {
 		}
 		return (lista.size()==new HashSet<>(lista).size());
 	}
-	public List<Celda> celdasVacias(){
-		List<Celda> resultado=new LinkedList<Celda>();
-		for (Celda c: celdas){
-			if (c.estaVacia()){
-				resultado.add(c);
-			}
-		}
-		return resultado;
-	}
+	/**
+	 * Devuelve la lista de numeros válidos para el almacen.
+	 * @return lista<Integer> de número válidos.
+	 */
 	public List<Integer> numeroValidos(){
 		List<Integer> resultado=new LinkedList<Integer>();
 		for (int i=1;i<10;++i){
@@ -65,6 +72,11 @@ public class Almacen {
 		}
 		return s;
 	}
+	/**
+	 * Comprueba si un objeto esta contenido en el almacen.
+	 * @param o Objeto
+	 * @return true si esta contenido, false si no
+	 */
 	public boolean contains(Object o){
 		return celdas.contains(o);
 	}
