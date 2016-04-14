@@ -88,6 +88,26 @@ public class Arbitro {
 		return false;
 		
 	}
+	public boolean solverRapido(){
+List<Celda> vacias=celdasVacias(tablero);
+		
+		if (vacias.isEmpty()){
+			return true;
+		}
+		Celda c=vacias.get(0);
+		List<Integer> numVal=numerosValidos(c,tablero);
+		Collections.shuffle(numVal);
+		for (int i:numVal){
+			
+				c.establecerNumero(i);
+				if (solverRapido()){
+					return true;
+				}
+				c.vaciar();
+//				System.out.println(obtenerTablero().toString());
+		}
+		return false;
+	}
 	public List<Celda> celdasVacias(Tablero tab){
 		List<Celda> resultado=new LinkedList<Celda>();
 		for (int i=0;i<tab.obtenerNumeroFilas();++i){
@@ -103,7 +123,6 @@ public class Arbitro {
 
 	public void rellenar(){
 		List<Celda> vacias=celdasVacias(tablero);
-		Deque<Celda> anadidas=new ArrayDeque<Celda>();
 		Celda c;
 		vacias=celdasVacias(tablero);
 		while (!vacias.isEmpty()){
@@ -124,15 +143,16 @@ public class Arbitro {
 		Collections.shuffle(lista, new Random(seed));
 		boolean bucle=true;
 		while (bucle){
+//			System.out.println(obtenerTablero().toString());
 			if (lista.size()>0){
 				Celda r=lista.get(0);
 				int num=r.devolverNum();
 				r.vaciar();
-				if (soluciones()>1){
+				if (soluciones()>dificultad+1){
 					r.establecerNumero(num);
 					bucle=false;
 				}else{
-					lista.remove(0);
+					lista.remove(r);
 				}
 			}else{
 				bucle=false;
