@@ -130,7 +130,6 @@ public class SudokuGUI {
 		sol.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				arbitro.obtenerTablero().changeCell(originales);
-				
 				arbitro.solverRapido();
 				clear();
 				
