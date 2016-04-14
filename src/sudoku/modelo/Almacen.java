@@ -6,6 +6,9 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class Almacen {
+	/**
+	 * 
+	 */
 	private List<Celda> celdas;
 	public Almacen(int N){
 		celdas=new LinkedList<Celda>();

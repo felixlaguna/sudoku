@@ -24,7 +24,7 @@ import sudoku.modelo.*;
 import sudoku.control.*;
 
 /**
- * Clase de interfaz gráfixa de la sopa de letras.
+ * Clase de interfaz gráfica de la sopa de letras.
  * @author FELIX
  *
  */

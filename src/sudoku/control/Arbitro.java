@@ -43,13 +43,24 @@ public class Arbitro {
 	public Tablero obtenerTablero(){
 		return tablero;
 	}
-	public static <T> T aleatorio(List<T> lista){
+	/**
+	 * Método estático para devolver un elemento aleatorio de una lista.
+	 * @param lista lista<T>
+	 * @return elemento T aleatorio
+	 */
+	private static <T> T aleatorio(List<T> lista){
 		if (lista.size()>0){
 			return lista.get(ThreadLocalRandom.current().nextInt(0,lista.size()));
 		}
 		return null;
 	}
-	public List<Integer> numerosValidos(Celda c,Tablero tab){
+	/**
+	 * Devuelve los numeros válidos para una celda y un tablero.
+	 * @param c Celda
+	 * @param tab tablero
+	 * @return Lista<Integer> de numeros válidos
+	 */
+	private List<Integer> numerosValidos(Celda c,Tablero tab){
 		List<Integer> temp1=tab.obtenerRecuadro(c).numeroValidos();
 		List<Integer> temp2=tab.obtenerFila(c).numeroValidos();
 		List<Integer> temp3=tab.obtenerColumna(c).numeroValidos();
@@ -57,7 +68,12 @@ public class Arbitro {
 		temp1.retainAll(temp3);
 		return temp1;
 	}
-	public boolean solver(Tablero tab){
+	/**
+	 * Solucionador 1 para el sudoku.
+	 * @param tab tablero
+	 * @return true si tiene solución, false si no
+	 */
+	private boolean solver(Tablero tab){
 		List<Celda> vacias=celdasVacias(tab);
 
 		if (vacias.isEmpty()){
@@ -77,6 +93,10 @@ public class Arbitro {
 		return false;
 
 	}
+	/**
+	 * Solucionador y generador de tableros aleatorios.
+	 * @return true si tiene solución, false si no
+	 */
 	public boolean solverRapido(){
 		List<Celda> vacias=celdasVacias(tablero);
 
@@ -96,6 +116,11 @@ public class Arbitro {
 		}
 		return false;
 	}
+	/**
+	 * Devuelve la lista de celda vacías de un tablero.
+	 * @param tab tablero
+	 * @return lista<Celda> de celdas
+	 */
 	public List<Celda> celdasVacias(Tablero tab){
 		List<Celda> resultado=new LinkedList<Celda>();
 		for (int i=0;i<tab.obtenerNumeroFilas();++i){
@@ -108,8 +133,11 @@ public class Arbitro {
 		}
 		return resultado;
 	}
-
-	public void rellenar(){
+	/**
+	 * Rellenador 1 del tablero, tiempo aproximado: 5 min.
+	 */
+	@SuppressWarnings("unused")
+	private void rellenar(){
 		List<Celda> vacias=celdasVacias(tablero);
 		Celda c;
 		vacias=celdasVacias(tablero);
@@ -124,6 +152,10 @@ public class Arbitro {
 
 		}
 	}
+	/**
+	 * Elimina determinadas celdas y deja el sudoku listo para la resolución.
+	 * @param dificultad int que indica la dificultad, no mayor que 7
+	 */
 	public void terminar(int dificultad){
 		List<Celda> lista=tablero.toList();
 		long seed=System.nanoTime();
@@ -146,7 +178,11 @@ public class Arbitro {
 
 		}
 	}
-	public int soluciones(){
+	/**
+	 * Devuelve el número de soluciones del tablero.
+	 * @return
+	 */
+	private int soluciones(){
 		int max=0;
 		for (int i=0;i<tablero.obtenerNumeroFilas();++i){
 			for (int j=0;j<tablero.obtenerNumeroColumnas();++j){
@@ -157,6 +193,10 @@ public class Arbitro {
 		}
 		return max;
 	}
+	/**
+	 * Comprueba si el tablero es correcto.
+	 * @return true si es correcto, false si no
+	 */
 	public boolean correcto(){
 		boolean resultado=true;
 		for (int i=0;i<9;++i){
