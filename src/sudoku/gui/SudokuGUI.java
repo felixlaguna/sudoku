@@ -18,6 +18,7 @@ import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import sudoku.modelo.*;
 import sudoku.control.*;
@@ -140,7 +141,18 @@ public class SudokuGUI {
 		reset.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				f.dispose();
-				inicializar();
+				int num;
+				Object[] possibilities = {0, 1, 2,3,4,5,6,7,8,9};
+				num = (int)JOptionPane.showInputDialog(
+				                   	f,
+				                    "Seleccione una dificultad\n",
+				                    "Customized Dialog",
+				                    JOptionPane.PLAIN_MESSAGE,
+				                    null,
+				                    possibilities,
+				                    "ham");
+
+				inicializar(num);
 				
 			}
 		});
@@ -167,7 +179,7 @@ public class SudokuGUI {
 	 * @param args argumentos como array de strings.
 	 */
 	public static void main(String[] args) {
-		inicializar();
+		inicializar(2);
 	}
 	/**
 	 * Clase interna de cell, un tipo de botón jButton.
@@ -272,10 +284,10 @@ public class SudokuGUI {
 	/**
 	 * Inicializa los valores.
 	 */
-	private static void inicializar(){
+	private static void inicializar(int num){
 		arbitro=new Arbitro(N,N);
 		arbitro.solverRapido();
-		arbitro.terminar(2);
+		arbitro.terminar(num);
 		originales=new ArrayList<Celda>();
 		originales.addAll(arbitro.obtenerTablero().toList());
 		originales.removeAll(arbitro.celdasVacias(arbitro.obtenerTablero()));
