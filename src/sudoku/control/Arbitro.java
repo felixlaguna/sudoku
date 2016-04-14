@@ -171,4 +171,13 @@ List<Celda> vacias=celdasVacias(tablero);
 		}
 		return max;
 	}
+	public boolean correcto(){
+		boolean resultado=true;
+		for (int i=0;i<9;++i){
+			resultado&=tablero.obtenerRecuadro(i).esCorrecto();
+			resultado&=tablero.obtenerFila(i).esCorrecto();
+			resultado&=tablero.obtenerColumna(i).esCorrecto();
+		}
+		return resultado;
+	}
 }

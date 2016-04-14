@@ -63,7 +63,11 @@ public class Celda {
 	 */
 	public String obtenerString(){
 		String s=new String();
-		s+=numero;
+		if (numero==0){
+			s+="";
+		}else{
+			s+=numero;
+		}
 		return s;
 		}
 	public void vaciar(){
@@ -79,5 +83,19 @@ public class Celda {
 		Celda c=new Celda(fila,columna);
 		c.establecerNumero(numero);
 		return c;
+	}
+	public void incrementar(){
+		if (numero>=9){
+			numero=1;
+		}else{
+			numero++;
+		}
+	}
+	public void decrementar(){
+		if (numero<=1){
+			numero=9;
+		}else{
+			numero--;
+		}
 	}
 }

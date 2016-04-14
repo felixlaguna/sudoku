@@ -121,9 +121,8 @@ public class Tablero {
 		s+="\n";
 		return s;
 	}
-	public Almacen obtenerRecuadro(int x,int y){
-		int num=(int) Math.sqrt(recuadros.size());
-		return recuadros.get(x*num+y);
+	public Almacen obtenerRecuadro(int x){
+		return recuadros.get(x);
 	}
 	public Almacen obtenerRecuadro(Celda c){
 		Almacen almacen=null;
@@ -215,13 +214,24 @@ public class Tablero {
 		return resultado;
 	}
 	public List<Celda> toList(){
-		List<Celda> lista= new ArrayList();
+		List<Celda> lista= new ArrayList<Celda>();
 		for (int i=0;i<this.obtenerNumeroFilas();++i){
 			for (int j=0;j<this.obtenerNumeroColumnas();++j){
 				lista.add(obtenerCelda(i,j));
 			}
 		}
 		return lista;
+	}
+	public void changeCell(List<Celda> lista){
+		for (int i=0;i<this.obtenerNumeroFilas();++i){
+			for (int j=0;j<this.obtenerNumeroColumnas();++j){
+				if (!lista.contains(obtenerCelda(i,j))){
+					obtenerCelda(i,j).vaciar();
+				}
+				
+			}
+		}
+		
 	}
 	
 	
