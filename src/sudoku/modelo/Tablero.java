@@ -160,15 +160,6 @@ public class Tablero {
 		}
 		return almacen;
 	}
-	private List<Almacen> obtenerrecuadros(){
-		return this.recuadros;
-	}
-	private List<Almacen> obtenerfilas(){
-		return this.filass;
-	}
-	private List<Almacen> obtenercolumnas(){
-		return this.columnass;
-	}
 	private void colocarrecuadros(List<Almacen> a){
 		this.recuadros=a;
 	}

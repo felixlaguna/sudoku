@@ -1,7 +1,5 @@
 package sudoku.modelo;
 
-import java.util.List;
-
 /**
  * Clase de celda.
  * @author FELIX

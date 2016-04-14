@@ -1,9 +1,6 @@
 package sudoku.control;
 
-import java.util.ArrayDeque;
-import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Deque;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
@@ -38,21 +35,13 @@ public class Arbitro {
 	 * @param sentido sentido
 	 * @return true si cabe, false si no
 	 */
-	
+
 	/**
 	 * Devuelve el tablero.
 	 * @return tablero
 	 */
 	public Tablero obtenerTablero(){
 		return tablero;
-	}
-	public void colocar(int fila, int columna,int num){
-		tablero.obtenerCelda(fila, columna).establecerNumero(num);
-	}
-	public void colocar(Celda c,int num){
-		if (tablero.estaEnTablero(c)){
-			c.establecerNumero(num);
-		}
 	}
 	public static <T> T aleatorio(List<T> lista){
 		if (lista.size()>0){
@@ -70,27 +59,27 @@ public class Arbitro {
 	}
 	public boolean solver(Tablero tab){
 		List<Celda> vacias=celdasVacias(tab);
-		
+
 		if (vacias.isEmpty()){
 			return true;
 		}
 		Celda c=vacias.get(0);
 		List<Integer> numVal=numerosValidos(c,tab);
 		for (int i:numVal){
-			
-				c.establecerNumero(i);
-				if (solver(tab)){
-					return true;
-				}
-				c.vaciar();
-				System.out.println(obtenerTablero().toString());
+
+			c.establecerNumero(i);
+			if (solver(tab)){
+				return true;
+			}
+			c.vaciar();
+			System.out.println(obtenerTablero().toString());
 		}
 		return false;
-		
+
 	}
 	public boolean solverRapido(){
-List<Celda> vacias=celdasVacias(tablero);
-		
+		List<Celda> vacias=celdasVacias(tablero);
+
 		if (vacias.isEmpty()){
 			return true;
 		}
@@ -98,13 +87,12 @@ List<Celda> vacias=celdasVacias(tablero);
 		List<Integer> numVal=numerosValidos(c,tablero);
 		Collections.shuffle(numVal);
 		for (int i:numVal){
-			
-				c.establecerNumero(i);
-				if (solverRapido()){
-					return true;
-				}
-				c.vaciar();
-//				System.out.println(obtenerTablero().toString());
+
+			c.establecerNumero(i);
+			if (solverRapido()){
+				return true;
+			}
+			c.vaciar();
 		}
 		return false;
 	}
@@ -133,8 +121,7 @@ List<Celda> vacias=celdasVacias(tablero);
 			if (!solver(tab)){
 				c.vaciar();
 			}
-			vacias=celdasVacias(tablero);
-			System.out.println(obtenerTablero().toString());
+
 		}
 	}
 	public void terminar(int dificultad){
@@ -143,7 +130,6 @@ List<Celda> vacias=celdasVacias(tablero);
 		Collections.shuffle(lista, new Random(seed));
 		boolean bucle=true;
 		while (bucle){
-//			System.out.println(obtenerTablero().toString());
 			if (lista.size()>0){
 				Celda r=lista.get(0);
 				int num=r.devolverNum();
@@ -157,7 +143,7 @@ List<Celda> vacias=celdasVacias(tablero);
 			}else{
 				bucle=false;
 			}
-			
+
 		}
 	}
 	public int soluciones(){
